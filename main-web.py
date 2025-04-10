@@ -31,16 +31,23 @@ endpoint = configur.get('webservice', 'endpoint')
 print(">>calling web service...")
 print(endpoint)
 
+url = endpoint + "/movies"
+
+response = requests.get(url)
+
+status_code = response.status_code
+
 print()
-print("TODO")
+print(status_code)
 print()
 
-#
-# TODO
-#
+body = response.json()
 
-
-
+if status_code == 200: # success!
+  for row in body:
+    print(row)
+else: # error:
+  print("**Error:", body)
 
 print()
 print("**Done**")

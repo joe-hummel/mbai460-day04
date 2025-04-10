@@ -47,14 +47,19 @@ print(">>executing query...")
 sql = """
       select * from movies limit 10 offset 0;
       """
-#
-# TODO
-#
-print()
-print("TODO")
+
+dbCursor = dbConn.cursor()
+dbCursor.execute(sql)
+
+rows = dbCursor.fetchall()
+
 print()
 
+for row in rows:
+  print(row)
 
+dbCursor.close()
+dbConn.close()
 
 
 print()
